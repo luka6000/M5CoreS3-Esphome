@@ -58,9 +58,11 @@ psram:
 
 external_components:
   - source:
-      type: git
-      url: https://github.com/m5stack/M5CoreS3-Esphome
-    components: [ board_m5cores3, m5cores3_audio, m5cores3_display ]
+      # type: git
+      # url: https://github.com/m5stack/M5CoreS3-Esphome
+      type: local
+      path: ../components
+    # components: [ board_m5cores3, m5cores3_audio, m5cores3_display ]
     refresh: 0s
 
 # Enable logging
@@ -68,9 +70,9 @@ logger:
 
 # Enable Home Assistant API
 api:
-  encryption:
-    # Replace the key by your API key
-    key: "<YOUR_API_KEY>"
+  # encryption:
+  #   # Replace the key by your API key
+  #   key: "<YOUR_API_KEY>"
   on_client_connected:
     - script.execute: draw_display
   on_client_disconnected:
@@ -79,7 +81,7 @@ api:
 ota:
   - platform: esphome
     # Replace the key by your OTA key
-    password: "<YOUR_OTA_KEY>"
+    # password: "<YOUR_OTA_KEY>"
 
 wifi:
   # Enable fallback hotspot (captive portal) in case wifi connection fails
